@@ -1,0 +1,17 @@
+module.exports.config = {
+  name: "autosong",
+  eventType: ["log:subscribe"],
+  version: "1.0.0",
+  credits: "Sizan",
+  description: "লিংক দিলে অটো গান পাঠাবে"
+};
+
+module.exports.handleEvent = async function({ api, event }) {
+    const axios = require("axios");
+    const { threadID, messageID, body } = event;
+
+    if (body && (body.includes("facebook.com") || body.includes("tiktok.com"))) {
+        api.sendMessage("লিংক পেয়েছি! গানটি পাঠাচ্ছি...", threadID, messageID);
+        // এখানে ডাউনলোডের বাকি কোড বসবে
+    }
+};
